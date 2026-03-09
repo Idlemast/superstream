@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react"
-import { PROVIDERS } from "./config"
+import { PROVIDERS } from "./Config"
 
 export default function StreamingView({ movie, onBack, onDetail }) {
   const [providerIdx, setProviderIdx] = useState(0);

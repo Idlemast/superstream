@@ -1,4 +1,7 @@
-import { IMG } from "./config"
+import { IMG } from "./Config"
+
+// Composant pour afficher un acteur
+// Utilisée dans MovieDetailsView (distribution) et SearchView (résultats acteurs)
 
 export default function ActorCard({ actor, onClick }) {
   const photo = actor.profile_path ? `${IMG}/w185${actor.profile_path}` : null;
@@ -11,9 +14,7 @@ export default function ActorCard({ actor, onClick }) {
       }
     </div>
     <p className="text-sm text-white font-medium mb-0.5">{actor.name}</p>
-    <p className="text-xs text-zinc-500">
-      { actor.character }
-    </p>
+    <p className="text-xs text-zinc-500">{actor.character}</p>
   </div>
 );
 }

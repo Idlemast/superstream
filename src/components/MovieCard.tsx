@@ -1,9 +1,15 @@
 import { useState } from "react"
-import { IMG } from "./config"
+import { IMG } from "./Config"
+
+// Component réutilisable pour afficher un film
+// Utilisée dans : SearchView, MovieDetailView (films similaires), ActorDetailView (filmographie)
 
 export default function MovieCard({ movie, onClick }) {
+  // Si l'image TMDB échoue, affiche le placeholder
   const [err, setErr] = useState(false);
+  // Construction de l'URL image = null si pas de poster ou si erreur
   const src  = movie.poster_path && !err ? `${IMG}/w342${movie.poster_path}` : null;
+  // On garde juste l'année
   const year = movie.release_date?.split("-")[0];
 
   return (

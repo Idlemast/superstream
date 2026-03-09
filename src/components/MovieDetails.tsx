@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react"
-import { tmdb, IMG } from "./config"
+import { tmdb, IMG } from "./Config"
 import MovieCard from "./MovieCard";
 import ActorCard from "./ActorCard";
+
+// Vue détail d'un film. Va chercher 3 addresses :
+// infos film + casting + films similaires
 
 export default function MovieDetailView({ movieId, onBack, onSelectActor, onSelectMovie, onStream, onToggleFav, isFav }) {
   const [movie, setMovie] = useState(null);
@@ -10,6 +13,8 @@ export default function MovieDetailView({ movieId, onBack, onSelectActor, onSele
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Reset au changement de movieId, évite d'afficher les données
+    // du film précédent pendant le chargement du nouveau
     setLoading(true);
     setMovie(null);
     Promise.all([
@@ -18,7 +23,9 @@ export default function MovieDetailView({ movieId, onBack, onSelectActor, onSele
       tmdb(`/movie/${movieId}/similar`, { language: "fr-FR" }),
     ]).then(([m, c, s]) => {
       setMovie(m);
+      // on limite à 12 acteurs
       setCast(c.cast?.slice(0, 12) || []);
+      // et 6 films similaires
       setSimilar(s.results?.slice(0, 6) || []);
     }).finally(() => setLoading(false));
   }, [movieId]);
