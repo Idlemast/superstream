@@ -2,13 +2,13 @@ import { useRef, useState, useEffect } from "react"
 import { PROVIDERS } from "./Config"
 
 export default function StreamingView({ movie, onBack, onDetail }) {
-  const [providerIdx, setProviderIdx] = useState(0);
+  const [providerId, setProviderId] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [theater, setTheater] = useState(false);
   const iframeRef = useRef(null);
 
-  const provider = PROVIDERS[providerIdx];
-  useEffect(() => { setLoaded(false); }, [providerIdx]);
+  const provider = PROVIDERS[providerId];
+  useEffect(() => { setLoaded(false); }, [providerId]);
 
   return (
     <>
@@ -42,7 +42,7 @@ export default function StreamingView({ movie, onBack, onDetail }) {
               {PROVIDERS.map((p, i) => (
                 <button
                   key={p.label}
-                  className={`btn px-3.5 py-1.5 text-xs font-medium ${providerIdx === i ? "bg-orange-300 text-black" : "bg-transparent text-zinc-500"}`}onClick={() => setProviderIdx(i)}>
+                  className={`btn px-3.5 py-1.5 text-xs font-medium ${providerId === i ? "bg-orange-300 text-black" : "bg-transparent text-zinc-500"}`} onClick={() => setProviderId(i)}>
                   {p.label}
                 </button>
               ))}
@@ -72,7 +72,7 @@ export default function StreamingView({ movie, onBack, onDetail }) {
             )}
             <iframe
               ref={iframeRef}
-              key={`${movie.id}-${providerIdx}`}
+              key={`${movie.id}-${providerId}`}
               src={provider.url(movie.id)}
               onLoad={() => setLoaded(true)}
               allowFullScreen

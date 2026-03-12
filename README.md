@@ -132,11 +132,9 @@ L'application nécessite une clé API TMDB gratuite pour fonctionner.
 2. Aller dans **Paramètres du compte → API**
 3. Cliquer sur **Créer → Application développeur**
 4. Remplir le formulaire (usage personnel suffit)
-5. Copier la **clé API (v3 auth)**
+5. Copier la **clé API**
 
 ### Renseigner la clé dans l'application
-
-La clé **ne se configure pas dans un fichier `.env`** — elle se saisit directement dans l'interface :
 
 1. Lancer l'application (voir section suivante)
 2. Cliquer sur le bouton **"🔑 Entrer la clé TMDB"** dans la Navbar

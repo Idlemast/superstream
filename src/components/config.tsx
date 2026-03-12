@@ -5,12 +5,20 @@ const getKey = () => localStorage.getItem("tmdb_key") || "";
 export const TMDB = "https://api.themoviedb.org/3";
 // URL pour les images
 export const IMG = "https://image.tmdb.org/t/p";
-// Chaque provider génère une URL embed à partir de l'id TMDB du film. Si un provider ne charge pas,
-// l'utilisateur peut en essayer un autre depuis le player
+// Chaque provider génère une URL embed à partir de l'id TMDB du film. Si un provider ne charge pas, l'utilisateur peut en essayer un autre depuis le player
 export const PROVIDERS = [
-    { label: "VidSrc", url: (id: number) => `https://vidsrc.to/embed/movie/${id}` },
-    { label: "SuperEmbed", url: (id: number) => `https://multiembed.mov/?video_id=${id}&tmdb=1` },
-    { label: "Embed.su",   url: (id: number) => `https://embed.su/embed/movie/${id}` },
+    { label: "VidRock", url: (id: number) => `https://vidrock.ru/embed/movie/${id}` },
+    { label: "MultiEmbed", url: (id: number) => `https://multiembed.mov/?video_id=${id}&tmdb=1` },
+    { label: "VidNest",   url: (id: number) => `https://vidnest.fun/movie/${id}` },
+    { label: "111Movies",   url: (id: number) => `https://111movies.com/movie/${id}` },
+    { label: "Rivestream",   url: (id: number) => `https://rivestream.org/embed?type=movie&id=${id}` },
+    { label: "SmashyStream",   url: (id: number) => `https://embed.smashystream.com/playere.php?tmdb=${id}` },
+    { label: "VidLink",   url: (id: number) => `https://vidlink.pro/movie/${id}?autoplay=true&title=true` },
+    { label: "VidFast",   url: (id: number) => `https://vidfast.pro/movie/${id}?autoPlay=true` },
+    { label: "2Embed",   url: (id: number) => `https://www.2embed.cc/embed/${id}` },
+    { label: "MoviesAPI",   url: (id: number) => `https://moviesapi.club/movie/${id}` },
+    { label: "AutoEmbed",   url: (id: number) => `https://player.autoembed.cc/embed/movie/${id}?autoplay=true` },
+    { label: "VidSrc",   url: (id: number) => `https://vidsrcme.ru/embed/movie/${id}` },
 ];
 
 // Fonction générique pour tous les appels TMDB
