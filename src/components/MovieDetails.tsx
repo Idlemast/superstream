@@ -105,7 +105,7 @@ export default function MovieDetailView({ movieId, onBack, onSelectActor, onSele
           <div className="mt-12">
             <h2 className="serif text-xl mb-5 text-orange-300">Distribution</h2>
             <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(128px, 1fr))" }}>
-              {cast.map(p => <ActorCard key={p.id} actor={p} onClick={onSelectActor} />)}
+              {cast.map(a => <ActorCard key={a.id} actor={a} onClick={onSelectActor} />)}
             </div>
           </div>
         )}

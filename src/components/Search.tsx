@@ -25,10 +25,7 @@ export default function SearchView({ onSelectMovie, onSelectActor, favs, onSelec
         .catch(() => {});
     }, []);
 
-    // Debounce de 350ms : attend que l'utilisateur arrête de taper
-    // avant d'envoyer la requête → évite un appel API par caractère
-    // ⚠️ Bug ici : "/search/actor" n'existe pas dans l'API TMDB
-    //    → à corriger en "/search/person"
+    // Délai de 350ms : attend que l'utilisateur arrête de taper avant d'envoyer la requête = évite de spam l'API
     const search = useCallback((q, type) => {
         clearTimeout(timer.current);
         if (!q.trim()) { setResults([]); return; }

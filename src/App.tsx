@@ -50,7 +50,7 @@ export default function App() {
         <SearchView
           key={keyVersion}
           onSelectMovie={m => push("movie", { movieId: m.id })}
-          onSelectActor={p => push("actor", { personId: p.id })}
+          onSelectActor={a => push("actor", { actorId: a.id })}
           // liste des favoris
           favs={favs}
           onSelectFav={m => push("movie", { movieId: m.id })}
@@ -60,7 +60,7 @@ export default function App() {
         <MovieDetailView
           movieId={current.payload.movieId}
           onBack={pop}
-          onSelectActor={p => push("actor", { actor: p.id })}
+          onSelectActor={a => push("actor", { actorId: a.id })}
           onSelectMovie={m => push("movie", { movieId: m.id })}
           // bouton "Regarder"
           onStream={m => push("stream", { movie: m })}
@@ -72,7 +72,7 @@ export default function App() {
       )}
       {current.view === "actor" && (
         <ActorDetailView
-          personId={current.payload.personId}
+          actorId={current.payload.actorId}
           onBack={pop}
           // vers ActorDetails
           onSelectMovie={m => push("movie", { movieId: m.id })}

@@ -17,13 +17,13 @@ export default function Navbar({ onHome, onKeyChange }) {
     return (
         <nav className="sticky top-0 z-50 bg-neutral-950 backdrop-blur-lg border-b-2 border-solid border-gray-800 py-0 px-6 flex items-center h-16 gap-3 flex-wrap">
             <button className="btn flex items-center gap-2" onClick={onHome}>
-                <span className="text-xl text-orange-300 font-bold">Super</span>
-                <span className="text-xl text-white">Stream</span>
+                <span className="text-lg md:text-xl text-orange-300 font-bold">Super</span>
+                <span className="text-lg md:text-xl text-white">Stream</span>
             </button>
             <div className="flex-1" />
             {editing ? (
                 <div className="flex gap-2 items-center">
-                    <input className="bg-zinc-900 border-solid border-2 border-orange-300 text-stone-200 py-1.5 px-3 rounded-md text-sm outline-none w-56"
+                    <input className="bg-zinc-900 border-solid border-2 border-orange-300 text-stone-200 py-1.5 px-3 rounded-md text-sm outline-none w-20 md:w-56"
                         autoFocus value={input} placeholder="Colle ta clé TMDB..." 
                         onChange={e => setInput(e.target.value)}
                         onKeyDown={e => e.key === "Enter" && save()}

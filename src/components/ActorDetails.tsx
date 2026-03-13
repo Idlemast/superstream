@@ -27,8 +27,8 @@ export default function ActorDetailsView({ actorId, onBack, onSelectMovie }) {
   );
   if (!actor) return null;
 
-  const photo  = actor.profile_path ? `${IMG}/w342${actor.profile_path}` : null;
-  const bio    = actor.biography || "";
+  const photo = actor.profile_path ? `${IMG}/w342${actor.profile_path}` : null;
+  const bio = actor.biography || "";
   const cutBio = bio.slice(0, 420);
 
   return (

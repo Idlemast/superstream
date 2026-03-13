@@ -36,26 +36,24 @@ export default function StreamingView({ movie, onBack, onDetail }) {
           className={`overflow-hidden bg-black shadow-2xl shadow-black ${ theater ? "rounded-none border-none" : "rounded-2xl border-0 border-solid border-gray-800"}`}>
 
           {/* Controls bar */}
-          <div
-            className="flex items-center gap-2.5 flex-wrap px-4 py-2.5 bg-neutral-900 border-b-2 border-solid border-gray-800">
-            <div className="flex rounded-lg overflow-hidden border-2 border-solid border-gray-900">
-              {PROVIDERS.map((p, i) => (
-                <button
-                  key={p.label}
-                  className={`btn px-3.5 py-1.5 text-xs font-medium ${providerId === i ? "bg-orange-300 text-black" : "bg-transparent text-zinc-500"}`} onClick={() => setProviderId(i)}>
-                  {p.label}
-                </button>
-              ))}
+          <div className="flex items-center gap-2.5 flex-wrap px-4 py-2.5 bg-neutral-900 border-b-2 border-solid border-gray-800">
+            <div className="flex-1 min-w-0 overflow-x-auto" style={{ scrollbarWidth: "none" }}>
+              <div className="flex rounded-lg overflow-hidden border-2 border-solid border-gray-900 overflow-x-auto w-fit">
+                {PROVIDERS.map((p, i) => (
+                  <button
+                    key={p.label}
+                    className={`btn px-3.5 py-1.5 text-xs font-medium ${providerId === i ? "bg-orange-300 text-black" : "bg-transparent text-zinc-500"}`} onClick={() => setProviderId(i)}>
+                    {p.label}
+                  </button>
+                ))}
+              </div>
             </div>
-
-            <div className="flex-1" />
-
             <button
-              className={`btn px-3.5 py-1.5 rounded-lg text-xs bg-transparent border-2 border-solid border-gray-900 ${ theater ? "text-orange-300" : "text-zinc-500" }`} onClick={() => setTheater(v => !v)}>
+              className={`btn shrink-0 px-3.5 py-1.5 rounded-lg text-xs bg-transparent border-2 border-solid border-gray-900 ${ theater ? "text-orange-300" : "text-zinc-500" }`} onClick={() => setTheater(v => !v)}>
               {theater ? "⊠ Quitter cinéma" : "⊡ Mode cinéma"}
             </button>
             <button
-              className="btn px-3.5 py-1.5 rounded-lg text-xs bg-transparent border-2 border-solid border-gray-900 text-zinc-500" onClick={() => iframeRef.current?.requestFullscreen()}
+              className="btn shrink-0 px-3.5 py-1.5 rounded-lg text-xs bg-transparent border-2 border-solid border-gray-900 text-zinc-500" onClick={() => iframeRef.current?.requestFullscreen()}
             >
               ⛶ Plein écran
             </button>
