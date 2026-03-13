@@ -19,9 +19,9 @@ export default function App() {
 
   // Ajoute une vue à la stack + scroll en haut
   // useCallback pour éviter de recréer la fonction à chaque render
-  const push = useCallback((view, payload = {}) => {
+  const push = useCallback((view, data = {}) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    setStack(s => [...s, { view, payload }]);
+    setStack(s => [...s, { view, data }]);
   }, []);
 
   // Retire la vue courante → retourne à la précédente
@@ -58,7 +58,7 @@ export default function App() {
       )}
       {current.view === "movie" && (
         <MovieDetailView
-          movieId={current.payload.movieId}
+          movieId={current.data.movieId}
           onBack={pop}
           onSelectActor={a => push("actor", { actorId: a.id })}
           onSelectMovie={m => push("movie", { movieId: m.id })}
@@ -72,7 +72,7 @@ export default function App() {
       )}
       {current.view === "actor" && (
         <ActorDetailView
-          actorId={current.payload.actorId}
+          actorId={current.data.actorId}
           onBack={pop}
           // vers ActorDetails
           onSelectMovie={m => push("movie", { movieId: m.id })}
@@ -80,7 +80,7 @@ export default function App() {
       )}
       {current.view === "stream" && (
         <StreamingView
-          movie={current.payload.movie}
+          movie={current.data.movie}
           onBack={pop}
           // vers MovieDetails
           onDetail={m => push("movie", { movieId: m.id })}
